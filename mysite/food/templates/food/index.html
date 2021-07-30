@@ -1,0 +1,42 @@
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   {% block content %}
+   <br>
+   <h3>Hey!!! {{user.username}} Nice to meet You again...</h3>
+   <br>
+   {% for item in items %}
+
+   <div class="row">
+       <div class="col-md-3 offset-md-2">
+        <img src="{{item.item_image}}" class="img-fluid mb-2" height="150px"/>
+       </div>
+       <div class="col-md-4">
+        <h3>{{ item.item_name }}</h3>
+        <h5>{{ item.item_desc|truncatechars:50}}</h5>
+        <h6>${{ item.item_price}}</h6>
+       </div>
+       <div class="col-md-2">
+       <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>
+       <a href="{% url 'food:update_item' item.id %}" class="btn btn-info">Update</a>
+
+       </div>
+   </div>
+
+   {% endfor %}
+   {% endblock %}
+   <h1>Hi im krish anjel</h1>
+   <ul>
+       <li>
+        <a href="{% url 'food:detail' item.id %}"> {{item.id}} - {{item.item_name}} </a>
+    </li>  
+   </ul>
+   
+   </body>
+</html>

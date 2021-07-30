@@ -1,0 +1,8 @@
+{% load static %}
+
+<link rel="shortcut icon" type="image/png" href="{% static 'users/butterfly.png' %}">
+
+<center>
+    <h2>{{user.username}}'s Profile</h2>
+<img height="400px" width="400px" src="{{user.profile.image.url}}">
+</center>

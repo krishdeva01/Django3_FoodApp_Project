@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="{% static 'users/butterfly.png' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+              <div class="card">
+                  <div class="card-header bg-info">
+                      <div class="card-title">
+                          <b>Register</b>
+                      </div>
+                      </div>
+                      <div class="card-body"><form method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="form-group">
+                                        {{field.name}}
+                                        <br>
+                                        {{field}}
+
+                                </div>
+                        
+                                {% endfor %}
+                                <br>
+                                <button class="btn btn-primary" type="submit">Sign up</button>
+                                <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                                </form>
+                        
+                     </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .container{
+        margin-top: 7%;
+    }
+    .card-title{
+        color: #fff;
+        font-size: xx-large;
+    }
+</style>
+</html>
